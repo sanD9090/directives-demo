@@ -1,0 +1,60 @@
+<h2>Style directive</h2>
+<hr />
+<div>
+  Enter marks:
+  <input type="text" [(ngModel)]="marks" (ngModelChange)="change()" />
+  <div [style.color]="color">Result: {{ marks }}</div>
+</div>
+
+<h2>class directive</h2>
+<hr />
+<div>
+  <input
+    type="text"
+    [(ngModel)]="letter"
+    (ngModelChange)="class()"
+    [ngClass]="x"
+  />
+</div>
+
+<h2>ngIf directive</h2>
+<hr />
+<button (click)="check()">{{ show ? "hide" : "show" }}</button>
+<div *ngIf="show">ngIf demo</div>
+
+<h2>ngIf and else</h2>
+<hr />
+<input type="checkbox" name="ifelse" [(ngModel)]="f" />check
+<div>
+  <div *ngIf="f; then temp1; else temp2"></div>
+  <ng-template #temp1> this shows if value is true </ng-template>
+  <ng-template #temp2> condition false </ng-template>
+</div>
+
+<h2>ngFor</h2>
+<hr />
+<ul *ngFor="let r of g">
+  <li>{{ r }}</li>
+</ul>
+
+<h2>ngSwitchcase</h2>
+<hr />
+number: <input type="number" [(ngModel)]="num"  />
+
+operation:
+<select [(ngModel)]="operation">
+    <option *ngFor="let x of operations;" [value]="x">
+    {{x}}
+    </option>
+   </select>
+<div [ngSwitch]="operation">
+    <p *ngSwitchCase="'SQR'">
+    Square of {{num}} is {{num*num}}
+    </p>
+    <p *ngSwitchCase="'CUBE'">
+    Cube of {{num}} is {{num*num*num}}
+    </p>
+    <p *ngSwitchDefault>
+    Please Select Operation!
+    </p>
+   </div>
